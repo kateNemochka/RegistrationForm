@@ -12,6 +12,7 @@ public class Note {
     private String nickname;
 
     // CONTACTS
+    private String homePhone;
     private String mobilePhone1;
     private String mobilePhone2;
 
@@ -28,18 +29,43 @@ public class Note {
     private ArrayList<Group> groups;
 
     // MODIFICATION DATES
-    private Date additionDate;
+    private Date creationDate;
     private Date modificationDate;
 
 
-    private enum Group {FAMILY, WORK, EMERGENCY, ALL}
-
     public Note(String firstName, String secondName, String lastName, String nickname,
-                String mobilePhone1, String mobilePhone2,
+                String homePhone, String mobilePhone1, String mobilePhone2,
                 String postalCode, String city, String street, String houseNumber, String apartmentNumber,
-                String comment) {
+                String fullAddress, String comment) {
+
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.lastName = lastName;
+        this.nickname = nickname;
+        this.homePhone = homePhone;
+        this.mobilePhone1 = mobilePhone1;
+        this.mobilePhone2 = mobilePhone2;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.apartmentNumber = apartmentNumber;
+        this.fullAddress = fullAddress;
+        this.comment = comment;
+
+        surnameAndInitials = lastName + " " + firstName + "." + (secondName==null ? "" : secondName + ".");
+        groups = new ArrayList<Group>();
+        groups.add(Group.ALL);
+
+        creationDate = new Date();
+        modificationDate = new Date();
 
     }
+
+    public void addGroup(Group group) {
+        groups.add(group);
+    }
+
 
 
 }
