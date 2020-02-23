@@ -12,7 +12,6 @@ public class Note {
     private String nickname;
 
     // CONTACTS
-    private String homePhone;
     private String mobilePhone1;
     private String mobilePhone2;
 
@@ -36,7 +35,7 @@ public class Note {
     private enum Group {FAMILY, WORK, EMERGENCY, ALL}
 
     public Note(String firstName, String secondName, String lastName, String nickname,
-                String homePhone, String mobilePhone1, String mobilePhone2,
+                String mobilePhone1, String mobilePhone2,
                 String postalCode, String city, String street, String houseNumber, String apartmentNumber,
                 String comment) {
 
