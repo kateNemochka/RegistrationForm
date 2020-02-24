@@ -8,47 +8,57 @@ import static org.junit.Assert.assertTrue;
 
 public class TestRegexSurnameUA implements RegexPatterns {
     @Test
-    public void testUkrainianSurnameWithCorrectInput() {
+    public void testWithCorrectInput() {
         assertTrue("Немченко".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameWithTwoCapitals() {
+    public void testWithTwoCapitals() {
         assertFalse("НеМченко".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameWithAllLowercase() {
+    public void testWithAllLowercase() {
         assertFalse("немченко".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameWith1stLowAnd3rdCap() {
+    public void testWith1stLowAnd3rdCap() {
         assertFalse("неМченко".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameWithDigitsAndSpecialSymbols() {
+    public void testWithDigitsAndSpecialSymbols() {
         assertFalse("Нем900рр--3ло".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameTooShort() {
+    public void testTooShort() {
         assertFalse("Н".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameTooLong() {
+    public void testTooLong() {
         assertFalse("Неммммммммммммммммммммммммммм".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameApostrophe() {
+    public void testApostrophe() {
         assertTrue("Лук'яненко".matches(SURNAME_PATTERN_UKR));
     }
 
     @Test
-    public void testUkrainianSurnameApostropheEnding() {
+    public void testApostropheEnding() {
         assertFalse("Лук'яненко'".matches(SURNAME_PATTERN_UKR));
+    }
+
+    @Test
+    public void testUkrainianLetters() {
+        assertTrue("Її".matches(SURNAME_PATTERN_UKR));
+    }
+
+    @Test
+    public void testSurnameWithTwoWords() {
+        assertTrue("Нечуй-Левицький".matches(SURNAME_PATTERN_UKR));
     }
 }

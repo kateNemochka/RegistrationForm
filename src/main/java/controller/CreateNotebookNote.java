@@ -18,7 +18,9 @@ public class CreateNotebookNote implements RegexPatterns, ViewConstants {
     }
 
     public void createNote() {
-       ScannerUtility su = new ScannerUtility(view, sc);
+        ScannerUtility su = new ScannerUtility(view, sc);
+
+        view.printMessage(view.localizeString(INITIAL_MESSAGE));
 
         /* INPUTTING NAME */
         model.setFirstName(su.inputStringValueWithScanner(INPUT_FIRST_NAME,
