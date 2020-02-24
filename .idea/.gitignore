@@ -1,6 +1,3 @@
 /workspace.xml
 *.class
 /target/
-.idea/
-
-locals.java
