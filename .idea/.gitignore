@@ -1,4 +1,6 @@
-# Default ignored files
 /workspace.xml
 *.class
-/target
+/target/
+.idea/
+
+locals.java

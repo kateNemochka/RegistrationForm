@@ -1,3 +1,5 @@
+package regex;
+
 import controller.RegexPatterns;
 import org.junit.Test;
 

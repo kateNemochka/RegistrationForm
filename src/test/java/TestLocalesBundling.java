@@ -1,26 +1,24 @@
 import org.junit.Before;
 import org.junit.Test;
 import view.View;
+import view.ViewConstants;
 
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
-public class TestLocales {
+public class TestLocalesBundling implements ViewConstants {
+    View view;
     ResourceBundle ukr;
     ResourceBundle eng;
 
-    /*@Before
-    public void setTestEnvironment() {
-        ukr = ResourceBundle.getBundle("resources", new Locale("uk", "UA"));
-        eng = ResourceBundle.getBundle("resources", new Locale("en", "US"));
-    }*/
 
     @Before
     public void setTestEnvironment() {
-        ukr = View.Bundles.UKRAINIAN.getBundle();
-        eng = View.Bundles.ENGLISH.getBundle();
+        View view = new View();
+        ukr = view.chooseLanguage(view.UKRAINIAN);
+        eng = view.chooseLanguage(view.ENGLISH);
     }
 
     @Test
@@ -47,6 +45,20 @@ public class TestLocales {
     @Test
     public void engGroupNames() {
         assertEquals("all contacts", eng.getString("group.all"));
+    }
+
+//    @Test
+//    public void customStringWithBundle() {
+//        assertNotEquals("a", eng.getString("a"));
+//    }
+    @Test
+    public void firstNameRequest() {
+        assertEquals("name", eng.getString(INPUT_FIRST_NAME));
+    }
+
+    @Test
+    public void inputRequest() {
+        assertEquals("Input", eng.getString(REQUEST_MESSAGE));
     }
 
 }

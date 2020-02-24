@@ -5,21 +5,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class View implements ViewConstants {
-
-    public enum Bundles {
-        UKRAINIAN(ResourceBundle.getBundle(RESOURCES_BUNDLE_FILE, new Locale("uk", "UA"))),
-        ENGLISH(ResourceBundle.getBundle(RESOURCES_BUNDLE_FILE, new Locale("en", "US")));
-
-        Bundles(ResourceBundle bundle) {
-            this.bundle = bundle;
-        }
-
-        private ResourceBundle bundle;
-
-        public ResourceBundle getBundle() {
-            return bundle;
-        }
-    }
+    public final Locale UKRAINIAN = new Locale("uk", "UA");
+    public final Locale ENGLISH = new Locale("en", "US");
 
     private static final String RESOURCES_BUNDLE_FILE = "resources";
 
@@ -28,15 +15,19 @@ public class View implements ViewConstants {
 
     // Localization settings
     public void requestLanguage() {
-        System.out.println("Choose the language || Оберіть мову\n1 - English\n2 - Українська");
+        System.out.println(LANGUAGE_REQUEST);
     }
 
-    public void setLanguage(Locale locale) {
-        resourceBundle = ResourceBundle.getBundle(RESOURCES_BUNDLE_FILE, locale);
+    public ResourceBundle chooseLanguage(Locale locale) {
+        return resourceBundle = ResourceBundle.getBundle(RESOURCES_BUNDLE_FILE, locale);
     }
 
-    public static ResourceBundle getResourceBundle() {
+    public ResourceBundle getResourceBundle() {
         return resourceBundle;
+    }
+
+    public String localizeString(String string) {
+        return resourceBundle.getString(string);
     }
 
 
@@ -55,7 +46,7 @@ public class View implements ViewConstants {
     }
 
     public void printInputRequest(String inputRequest) {
-        System.out.println(REQUEST_MESSAGE + " " + inputRequest);
+        System.out.println(localizeString(REQUEST_MESSAGE) + " " + localizeString(inputRequest));
     }
 
 }

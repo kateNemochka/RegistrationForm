@@ -1,10 +1,9 @@
-package model;
+package model.entity;
 
 public enum Group {
     FAMILY("group.family"),
     WORK("group.work"),
-    EMERGENCY("group.emergency"),
-    ALL("group.all");
+    EMERGENCY("group.emergency");
 
     Group(String name) {
         contactsGroupName = name;

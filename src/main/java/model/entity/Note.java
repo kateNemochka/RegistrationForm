@@ -1,7 +1,8 @@
-package model;
+package model.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Note {
     // NAME
@@ -12,6 +13,8 @@ public class Note {
     private String nickname;
 
     // CONTACTS
+    private String email;
+    private String skype;
     private String homePhone;
     private String mobilePhone1;
     private String mobilePhone2;
@@ -26,7 +29,7 @@ public class Note {
 
     // NOTE INFO
     private String comment;
-    private ArrayList<Group> groups;
+    private Set<Group> groups;
 
     // MODIFICATION DATES
     private Date creationDate;
@@ -34,6 +37,7 @@ public class Note {
 
 
     public Note(String firstName, String secondName, String lastName, String nickname,
+                String email, String skype,
                 String homePhone, String mobilePhone1, String mobilePhone2,
                 String postalCode, String city, String street, String houseNumber, String apartmentNumber,
                 String fullAddress, String comment) {
@@ -42,6 +46,8 @@ public class Note {
         this.secondName = secondName;
         this.lastName = lastName;
         this.nickname = nickname;
+        this.email = email;
+        this.skype = skype;
         this.homePhone = homePhone;
         this.mobilePhone1 = mobilePhone1;
         this.mobilePhone2 = mobilePhone2;
@@ -54,8 +60,7 @@ public class Note {
         this.comment = comment;
 
         surnameAndInitials = lastName + " " + firstName + "." + (secondName==null ? "" : secondName + ".");
-        groups = new ArrayList<Group>();
-        groups.add(Group.ALL);
+        groups = new HashSet<>();
 
         creationDate = new Date();
         modificationDate = new Date();
@@ -64,6 +69,7 @@ public class Note {
 
     public void addGroup(Group group) {
         groups.add(group);
+        modificationDate = new Date();
     }
 
 
